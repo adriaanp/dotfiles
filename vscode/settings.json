@@ -1,0 +1,15 @@
+// Place your settings in this file to overwrite the default settings
+{
+	"editor.formatOnType": true,
+	"editor.fontFamily": "DejaVu Sans Mono, Menlo, Monaco",
+	"editor.fontSize": 15,
+	"editor.renderWhitespace": "all",
+	"editor.insertSpaces": true,
+	"editor.tabSize": 4,
+	"editor.cursorStyle": "block",
+	"vsicons.dontShowNewVersionMessage": true,
+	"window.zoomLevel": 0,
+	"workbench.colorTheme": "Material",
+	"workbench.iconTheme": "vscode-icons",
+	"vim.disableAnnoyingNeovimMessage": true
+}
