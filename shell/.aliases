@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+colorflag="-G"
+
+alias pd='open -a "Parallels Desktop"'
+alias s='open -a "Sublime Text"'
+alias gvim='open -a "MacVim"'
+alias chrome='open -a "Google Chrome"'
+alias ls="command ls ${colorflag}"
+alias l="ls -lF ${colorflag}" # all files, in long format
+alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
+alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias reload='source ~/.bash_profile'
+alias sudo='sudo '
+alias DT='tee ~/Desktop/terminalOutput.txt'
+alias gs='git status'
+alias ga='git add .'
+alias gc='git commit -m' # requires you to type a commit message
+alias gp='git push'

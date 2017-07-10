@@ -1,42 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Variables
-export PATH=~/dev/pebble/arm-cs-tools/bin:$PATH
-export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"' # Only show the current directory's name in the tab
-export MONO_MANAGED_WATCHER=off
-export ASPNETCORE_ENVIRONMENT=Development
-
-colorflag="-G"
-
-# Aliases
-alias pd='open -a "Parallels Desktop"'
-alias s='open -a "Sublime Text"'
-alias gvim='open -a "MacVim"'
-alias chrome='open -a "Google Chrome"'
-
-alias ls="command ls ${colorflag}"
-alias l="ls -lF ${colorflag}" # all files, in long format
-alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
-alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias reload='source ~/.bashrc'
-
-## Enable aliases to be sudo’ed
-alias sudo='sudo '
-alias DT='tee ~/Desktop/terminalOutput.txt'
-
-## Git
-alias gs='git status'
-alias ga='git add .'
-alias gc='git commit -m' # requires you to type a commit message
-alias gp='git push'
-
-
-### Prompt Colors
 # Modified version of @gf3’s Sexy Bash Prompt
 # (https://github.com/gf3/dotfiles)
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
@@ -91,24 +54,9 @@ symbol="⚡ "
 export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n$symbol\[$RESET\]"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
-# Misc
-# set mono dir
-# [ -s "/Users/adriaanp/bin/mono.sh" ] && . "/Users/adriaanp/bin/mono.sh"
-
-
-# Functions
-
 function parse_git_dirty() {
         [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
 }
 function parse_git_branch() {
         git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
-
-function google() {
-    open /Applications/Google\ Chrome.app "https://www.google.com/search?q=$1";
-}
-
-mcd () { mkdir -p "$1" && cd "$1"; }
-trash() { command mv "@0" ~/.Trash ; }
-ql() { qlmanage -p "$*" >& /dev/null; }

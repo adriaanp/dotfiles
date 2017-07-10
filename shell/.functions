@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+function gl() { open /Applications/Google\ Chrome.app "https://www.google.com/search?q=$1"; }
+mcd () { mkdir -p "$1" && cd "$1"; }
+trash() { command mv "@0" ~/.Trash ; }
+ql() { qlmanage -p "$*" >& /dev/null; }
