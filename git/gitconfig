@@ -1,0 +1,51 @@
+[core]
+    excludesfile = ~/.gitignore
+    autocrlf = input
+    editor = code --wait
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
+[alias]
+    st = status -su
+    ci = commit
+    c = checkout
+    co = commit
+    cam = commit -a -m
+    s = status
+    l = log
+    aa = add -A
+    mt = mergetool --no-prompt
+    dt = difftool --no-prompt
+    lg = log --graph --pretty=format:'%Cred%h%Creset %Creset %s %Cgreen(%ci) %C(bold blue)<%an> %C(yellow bold)%d' --abbrev-commit
+    lgnm = log --no-merges --pretty=format:'%Cred%h%Creset %Creset %s %Cgreen(%ci) %C(bold blue)<%an> %C(yellow bold)%d' --abbrev-commit
+    open = !open `git config remote.origin.url`
+    browse = !git open
+    pr = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+# for bitbucket/stash remotes
+    spr = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f"
+    stash-all = stash save --include-untracked
+[merge]
+    ff = only
+[color]
+    # Use colors in Git commands that are capable of colored output when outputting to the terminal
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[include]
+    path = ~/.gitconfig.local
