@@ -9,7 +9,7 @@
 	"editor.cursorStyle": "block",
 	"vsicons.dontShowNewVersionMessage": true,
 	"window.zoomLevel": 0,
-	"workbench.colorTheme": "Material",
+	"workbench.colorTheme": "Solarized Dark",
 	"workbench.iconTheme": "vscode-icons",
 	"vim.disableAnnoyingNeovimMessage": true,
 	"vsicons.projectDetection.disableDetect": true

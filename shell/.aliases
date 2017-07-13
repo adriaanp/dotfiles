@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-colorflag="-G"
+# -G for OSX
+# --color for GNU coreutils
+colorflag="--color=auto"
 
 alias pd='open -a "Parallels Desktop"'
 alias s='open -a "Sublime Text"'

@@ -4,5 +4,5 @@ export EDITOR='code'
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"' # Only show the current directory's name in the tab
 export MONO_MANAGED_WATCHER=off
 export ASPNETCORE_ENVIRONMENT=Development
-
-export PATH="$(brew --prefix coreutils)/libexec/gnubin;$PATH"
+export GREP_OPTIONS='--color=auto'
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
