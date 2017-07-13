@@ -11,5 +11,6 @@
 	"window.zoomLevel": 0,
 	"workbench.colorTheme": "Material",
 	"workbench.iconTheme": "vscode-icons",
-	"vim.disableAnnoyingNeovimMessage": true
+	"vim.disableAnnoyingNeovimMessage": true,
+	"vsicons.projectDetection.disableDetect": true
 }

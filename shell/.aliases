@@ -4,7 +4,6 @@ colorflag="-G"
 
 alias pd='open -a "Parallels Desktop"'
 alias s='open -a "Sublime Text"'
-alias gvim='open -a "MacVim"'
 alias chrome='open -a "Google Chrome"'
 alias ls="command ls ${colorflag}"
 alias l="ls -lF ${colorflag}" # all files, in long format
@@ -21,3 +20,4 @@ alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m' # requires you to type a commit message
 alias gp='git push'
+alias updatesw='sudo softwareupdate -i -a'
