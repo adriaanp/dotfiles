@@ -116,5 +116,7 @@ install_dotfiles () {
 
 install_dotfiles
 
+[ ! -d "$HOME/bin" ] && ln -s "$BASEDIR/bin" "$HOME/bin"
+
 echo ''
 echo '  All installed!'
