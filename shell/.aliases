@@ -6,7 +6,7 @@ colorflag="--color=auto"
 
 alias pd='open -a "Parallels Desktop"'
 alias s='open -a "Sublime Text"'
-alias chrome='open -a "Google Chrome"'
+alias chrome='open -a /Applications/Google\ Chrome.app'
 alias ls="command ls ${colorflag}"
 alias l="ls -lF ${colorflag}" # all files, in long format
 alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
@@ -23,3 +23,4 @@ alias ga='git add .'
 alias gc='git commit -m' # requires you to type a commit message
 alias gp='git push'
 alias updatesw='sudo softwareupdate -i -a'
+alias fixcamera='sudo killall VDCAssistant'
