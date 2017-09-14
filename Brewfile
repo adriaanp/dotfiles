@@ -13,6 +13,7 @@ brew 'git'
 brew 'youtube-dl'
 brew 'jenv'
 brew 'leiningen'
+brew 'ffmpeg'
 
 cask 'alfred'
 cask 'iterm2'
