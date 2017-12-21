@@ -2,12 +2,12 @@
     excludesfile = ~/.gitignore
     autocrlf = input
     editor = code --wait
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 [alias]
     st = status -su
     ci = commit
@@ -30,6 +30,7 @@
     stash-all = stash save --include-untracked
 [merge]
     ff = only
+    tool = vscode
 [color]
     # Use colors in Git commands that are capable of colored output when outputting to the terminal
     ui = auto
