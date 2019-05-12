@@ -103,16 +103,24 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  link_file "$BASEDIR/shell/.aliases" ~/.aliases
-  link_file "$BASEDIR/shell/.bash_profile" ~/.bash_profile
-  link_file "$BASEDIR/shell/.bash_prompt" ~/.bash_prompt
-  link_file "$BASEDIR/shell/.bashrc" ~/.bashrc
-  link_file "$BASEDIR/shell/.exports" ~/.exports
-  link_file "$BASEDIR/shell/.functions" ~/.functions
+  link_file "$BASEDIR/shell/.shellaliases" ~/.shellaliases
+  link_file "$BASEDIR/shell/.shellvars" ~/.shellvars
+  link_file "$BASEDIR/shell/.shellfunctions" ~/.shellfunctions
+  link_file "$BASEDIR/shell/.shellpaths" ~/.shellpaths
+  link_file "$BASEDIR/shell/.profile" ~/.profile
+  link_file "$BASEDIR/shell/.zprofile" ~/.zprofile
+  link_file "$BASEDIR/shell/.zshrc" ~/.zshrc
+
   link_file "$BASEDIR/shell/.inputrc" ~/.inputrc
   link_file "$BASEDIR/git/gitconfig" ~/.gitconfig
   link_file "$BASEDIR/git/gitignore" ~/.gitignore
 }
+
+# Install Oh my Zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+#Install PowerLevel9k OMZ theme
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 install_dotfiles
 
