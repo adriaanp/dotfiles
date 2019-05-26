@@ -6,14 +6,34 @@
 	"editor.renderWhitespace": "all",
 	"editor.insertSpaces": true,
 	"editor.tabSize": 4,
-	"vsicons.dontShowNewVersionMessage": true,
 	"window.zoomLevel": 0,
 	"workbench.colorTheme": "Solarized Dark",
-	"workbench.iconTheme": "vscode-icons",
 	"vim.disableAnnoyingNeovimMessage": true,
-	"vsicons.projectDetection.disableDetect": true,
 
 	"clojure.leinPath": "/usr/local/bin/lein",
 	"clojure.toolsJar": "/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/lib/tools.jar",
-	"workbench.startupEditor": "newUntitledFile"
+	"explorer.confirmDragAndDrop": false,
+	"sync.gist": "705232f697d817ae3bc9578137b779b6",
+	"sync.lastUpload": "",
+	"sync.autoDownload": false,
+	"sync.autoUpload": false,
+	"sync.lastDownload": "2018-01-04T06:35:36.491Z",
+	"sync.forceDownload": false,
+	"sync.anonymousGist": false,
+	"sync.host": "",
+	"sync.pathPrefix": "",
+	"sync.quietSync": false,
+	"sync.askGistName": false,
+	"gitlens.advanced.messages": {
+		"suppressCommitHasNoPreviousCommitWarning": false,
+		"suppressCommitNotFoundWarning": false,
+		"suppressFileNotUnderSourceControlWarning": false,
+		"suppressGitVersionWarning": false,
+		"suppressLineUncommittedWarning": false,
+		"suppressNoRepositoryWarning": false,
+		"suppressUpdateNotice": false,
+		"suppressWelcomeNotice": true
+	},
+	"workbench.startupEditor": "newUntitledFile",
+	"extensions.ignoreRecommendations": false
 }

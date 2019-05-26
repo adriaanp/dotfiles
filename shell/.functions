@@ -4,3 +4,14 @@ function gl() { open /Applications/Google\ Chrome.app "https://www.google.com/se
 mcd () { mkdir -p "$1" && cd "$1"; }
 trash() { command mv "$@" ~/.Trash ; }
 ql() { qlmanage -p "$*" >& /dev/null; }
+
+function rider {
+    if [[ $# = 0 ]]
+    then
+        open -a "Rider"
+    else
+        local argPath="$1"
+        [[ $1 = /* ]] && argPath="$1" || argPath="$PWD/${1#./}"
+        open -a "Rider" "$argPath"
+    fi
+}

@@ -24,3 +24,4 @@ alias gc='git commit -m' # requires you to type a commit message
 alias gp='git push'
 alias updatesw='sudo softwareupdate -i -a'
 alias fixcamera='sudo killall VDCAssistant'
+alias gcb='git branch --merged| egrep -v (^*|master) | xargs git branch -d'
