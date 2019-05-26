@@ -9,6 +9,9 @@ alias DT='tee ~/Desktop/terminalOutput.txt'
 alias updatesw='sudo softwareupdate -i -a'
 alias fixcamera='sudo killall VDCAssistant'
 
+# delete all merged branches in repository
+alias gcb='git branch --merged| egrep -v (^*|master) | xargs git branch -d'
+
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
