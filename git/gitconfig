@@ -1,11 +1,13 @@
 [core]
     excludesfile = ~/.gitignore
     autocrlf = input
-    editor = code --wait
+    editor = nvim
 [diff]
-    tool = vscode
+    tool = nvimdiff
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE
 [mergetool "vscode"]
     cmd = code --wait $MERGED
 [alias]
