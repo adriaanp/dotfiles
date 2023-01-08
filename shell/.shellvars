@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export EDITOR='code'
+export EDITOR='nvim'
 
 export MYTMP=~/tmp
 
