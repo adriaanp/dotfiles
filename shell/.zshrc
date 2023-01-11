@@ -18,8 +18,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-source /usr/local/opt/nvm/nvm.sh
+[ -f /usr/local/opt/nvm/nvm.sh ] && source /usr/local/opt/nvm/nvm.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # somewhere this gets overwritten by oh-my-sh, so repeat it here
 alias ls='command ls --color=auto'
+
