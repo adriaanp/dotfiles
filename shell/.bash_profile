@@ -7,3 +7,5 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,bash_local}; do
 done;
 unset file;
 
+
+complete -C /usr/local/bin/terraform terraform

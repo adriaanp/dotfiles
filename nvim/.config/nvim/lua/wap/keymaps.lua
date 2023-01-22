@@ -5,7 +5,7 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-keymap('n', '<leader>e', ':Lex 30<cr>')
+keymap('n', '<leader>e', vim.cmd.Ex)
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 

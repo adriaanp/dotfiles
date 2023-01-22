@@ -20,6 +20,8 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 [ -f /usr/local/opt/nvm/nvm.sh ] && source /usr/local/opt/nvm/nvm.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
 
 # somewhere this gets overwritten by oh-my-sh, so repeat it here
 alias ls='command ls --color=auto'
