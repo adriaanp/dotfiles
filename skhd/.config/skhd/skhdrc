@@ -2,10 +2,25 @@
 ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 ## Close active application
-hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+#hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+hyper - w : yabai -m window --close
 hyper - return : open -na /Applications/iTerm.app
 ctrl + cmd - 1 : yabai -m window --display 1 yabai -m display --focus 1
 ctrl + cmd - 2 : yabai -m window --display 2 yabai -m display --focus 2
 ctrl + cmd - 3 : yabai -m window --display 3 yabai -m display --focus 3
+
 hyper - r : yabai -m space --rotate 90
 hyper - f : yabai -m window --toggle zoom-fullscreen
+hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+hyper - space : yabai -m space --balance
+
+## window focus
+alt - j : yabai -m window --focus south
+alt - h : yabai -m window --focus west
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+alt - s : yabai -m display --focus west
+alt - g : yabai -m display --focus east
+
+
