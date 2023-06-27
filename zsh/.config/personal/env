@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+export XDG_CONFIG_HOME=$HOME/.config
+export MYTMP=~/tmp
+export DOTFILES=$HOME/dotfiles
+
+export NVM_DIR="$HOME/.nvm"
+[ -f /usr/local/opt/nvm/nvm.sh ] && source /usr/local/opt/nvm/nvm.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+
+complete -o nospace -C /usr/local/bin/terraform terraform
+
+GPG_TTY=$(tty)
+export GPG_TTY
