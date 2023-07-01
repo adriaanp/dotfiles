@@ -1,2 +1,3 @@
 vim.opt.termguicolors = true
-pcall(vim.cmd, 'colorscheme onedark')
+
+vim.cmd.colorscheme "catppuccin"

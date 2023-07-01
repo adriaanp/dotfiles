@@ -24,3 +24,6 @@ keymap('v', 'p', '"_dP', opts)
 keymap({ 'n', 'v' }, '<leader>d', '"_dP')
 
 keymap('n', '<leader>f', vim.lsp.buf.format)
+
+keymap('n', '<leader>x', vim.cmd.bdelete, opts)
+keymap('n', '<leader>xx', function() vim.cmd('%bd') end, opts)

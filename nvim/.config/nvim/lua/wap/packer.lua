@@ -15,11 +15,7 @@ return require('packer').startup(function(use)
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
-	use {
-		'rose-pine/neovim',
-		as = 'rose-pine',
-	}
-	use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+	use { 'catppuccin/nvim', as = 'catppuccin' }
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -37,17 +33,17 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-rhubarb'
 	use 'lewis6991/gitsigns.nvim'
 
-	use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+	use 'nvim-lualine/lualine.nvim'          -- Fancier statusline
 	use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-	use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-	use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+	use 'numToStr/Comment.nvim'              -- "gc" to comment visual regions/lines
+	use 'tpope/vim-sleuth'                   -- Detect tabstop and shiftwidth automatically
 
 	use('theprimeagen/harpoon')
 
 	use('mfussenegger/nvim-dap')
 	use {
 		'rcarriga/nvim-dap-ui',
-		requires = {'mfussenegger/nvim-dap'}
+		requires = { 'mfussenegger/nvim-dap' }
 	}
 
 	use 'folke/neodev.nvim'

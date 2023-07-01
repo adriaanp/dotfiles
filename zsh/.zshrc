@@ -17,6 +17,7 @@ plugins=(
     colored-man-pages
     colorize
     autojump
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
