@@ -25,9 +25,9 @@ lsp.setup()
 
 local cmp = require('cmp')
 cmp.setup({
-  preselect = 'item',
+  preselect = cmp.PreselectMode.None,
   completion = {
-    completeopt = 'menu,menuone,noinsert,preview'
+    completeopt = 'menu,menuone,noinsert,noselect,preview'
   },
   mapping = {
     ['<C-Space>'] = cmp.mapping.complete()
