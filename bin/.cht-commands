@@ -1,0 +1,10 @@
+find
+awk
+sed
+grep
+xargs
+jq
+git
+docker
+stow
+tmux
