@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=`find ~/dev ~/homelab ~/dotfiles -maxdepth 1 -type d | fzf`
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+sessionname=`echo $selected | tr . _`
+tmuxrunning=`pgrep tmux`
+
+if [[ -z $tmuxrunning ]] && [[ -z $TMUX ]]; then
+  tmux new -s $sessionname -c $selected
+  exit 0
+fi
+
+if ! tmux has-session -t $sessionname 2> /dev/null; then
+  tmux new -ds $sessionname -c $selected
+fi
+
+if [[ -z $TMUX ]]; then
+  tmux a -t $sessionname
+else
+  tmux switch-client -t $sessionname
+fi
+
+
