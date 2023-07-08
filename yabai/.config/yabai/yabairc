@@ -1,10 +1,9 @@
 #!/usr/bin/env sh
 
 yabai -m space 1 --label chill
-yabai -m space 2 --label terminal
-yabai -m space 3 --label research
+yabai -m space 2 --label research
+yabai -m space 3 --label terminal
 yabai -m space 4 --label other
-yabai -m config --space 4 layout float
 
 yabai -m config layout bsp
 yabai -m config top_padding 2
@@ -12,6 +11,8 @@ yabai -m config bottom_padding 2
 yabai -m config left_padding 2
 yabai -m config right_padding 2
 yabai -m config window_gap 10
+
+yabai -m config --space 4 layout float
 
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
