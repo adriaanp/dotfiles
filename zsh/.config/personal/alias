@@ -57,3 +57,5 @@ alias jsonfix="pbpaste | jq . | pbcopy"
 alias lookbusy="cat /dev/urandom | hexdump -C | grep \"34 32\""
 
 alias ls="ls --color=auto"
+
+alias k="kubectl"
