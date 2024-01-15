@@ -1,27 +1,19 @@
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
+local lsp_zero = require('lsp-zero')
 
-lsp.configure('sumneko_lua', {
-  settings = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
-  }
-})
-
-lsp.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
-  lsp.default_keymaps({ buffer = bufnr })
+  lsp_zero.default_keymaps({ buffer = bufnr })
 
   vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-lsp.setup()
+require('mason').setup()
+require('mason-lspconfig').setup({
+  handlers = {
+    lsp_zero.default_setup,
+  }
+})
 
 local cmp = require('cmp')
 cmp.setup({
