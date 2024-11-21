@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 alias chrome='open -a /Applications/Google\ Chrome.app'
+alias rider='open -na "Rider.app" --args nosplash "$@"'
 
 alias sudo='sudo '
 alias vim='nvim'
