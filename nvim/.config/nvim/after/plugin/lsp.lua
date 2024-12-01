@@ -22,6 +22,7 @@ cmp.setup({
     completeopt = 'menu,menuone,noinsert,noselect,preview'
   },
   mapping = {
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete()
   },
 })
