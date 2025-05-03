@@ -23,6 +23,7 @@ plugins=(
     colorize
     autojump
     zsh-syntax-highlighting
+    vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
