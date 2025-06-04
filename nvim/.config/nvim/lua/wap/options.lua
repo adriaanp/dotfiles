@@ -35,6 +35,8 @@ local options = {
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
   breakindent = true,
+  list = true,
+  listchars = "tab:▷ ,lead:·,trail:·,extends:◣,precedes:◢,nbsp:○",
 }
 
 vim.opt.shortmess:append "c"
