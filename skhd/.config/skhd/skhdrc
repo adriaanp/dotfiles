@@ -1,5 +1,5 @@
 ## Quickly restart the yabai launch agent
-ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+ctrl + alt + cmd - r : yabai --restart-service
 
 ## Close active application
 #hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
@@ -20,4 +20,15 @@ alt - l : yabai -m window --focus east
 alt - s : yabai -m display --focus west
 alt - g : yabai -m display --focus east
 
+hyper - 1: yabai -m space --focus web
+hyper - 2: yabai -m space --focus term
+hyper - 3: yabai -m space --focus notes
+hyper - 4: yabai -m space --focus apps
+hyper - 5: yabai -m space --focus fun
+
+ctrl + shift - 1: yabai -m window --space web; yabai -m space --focus web
+ctrl + shift - 2: yabai -m window --space term; yabai -m space --focus term
+ctrl + shift - 3: yabai -m window --space notes; yabai -m space --focus notes
+ctrl + shift - 4: yabai -m window --space apps; yabai -m space --focus apps
+ctrl + shift - 5: yabai -m window --space fun; yabai -m space --focus fun
 
