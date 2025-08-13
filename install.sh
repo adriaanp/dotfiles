@@ -2,7 +2,7 @@
 
 set -e
 
-STOW_FOLDERS="bin,git,nvim,skhd,tmux,vscode,yabai,zsh"
+STOW_FOLDERS="bin,git,nvim,skhd,tmux,yabai,sketchybar,zsh"
 
 DOT_FILES=$HOME/dotfiles
 

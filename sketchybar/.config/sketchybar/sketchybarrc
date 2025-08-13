@@ -1,0 +1,133 @@
+#!/bin/bash
+
+### Globals ###
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+FONT="SF Pro"
+
+### Colors ###
+
+SPACE_BACKGROUND=0x40ffffff
+COLOR=0xffffffff
+BLACK=0xff000000
+
+### Bar Appearance ###
+
+bar_settings=(
+  height=40
+  margin=5
+  blur_radius=30
+  corner_radius=5
+  position=top
+  sticky=on
+  padding_left=10
+  padding_right=10
+)
+
+sketchybar --bar "${bar_settings[@]}"
+
+### Defaults ###
+
+defaults=(
+  padding_left=5
+  padding_right=5
+  icon.font="$FONT:Bold:17.0"
+  label.font="$FONT:Bold:14.0"
+  icon.color=$COLOR
+  label.color=$COLOR
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=4
+  background.corner_radius=2
+  background.height=20
+)
+sketchybar --default "${defaults[@]}"
+
+### Items ###
+
+## Spaces ##
+
+for sid in $(yabai -m query --spaces | jq -r '.[].index'); do
+  display=$(yabai -m query --spaces --space $sid | jq -r '.display')
+  
+  space=(
+    space="$sid"
+    associated_space="$sid"
+    icon="$sid"
+    display="$display"
+    icon.padding_left=7
+    icon.padding_right=7
+    icon.font="$FONT:Bold:14.0"
+    background.color=$SPACE_BACKGROUND
+    label.drawing=off
+    script="$PLUGIN_DIR/space.sh"
+    click_script="yabai -m space --focus $sid"
+  )
+
+  sketchybar --add space space."$sid" left \
+             --set space."$sid" "${space[@]}"
+done
+
+
+## Separator ##
+
+separator=(
+  icon=􀆊
+  icon.font="$FONT:Regular:14.0"
+  label.drawing=off
+)
+
+sketchybar --add item separator left \
+           --set separator "${separator[@]}"
+
+## App title ##
+
+front_app=(
+  icon.drawing=off
+  script="$PLUGIN_DIR/front_app.sh"
+)
+
+sketchybar --add item front_app left \
+           --set front_app "${front_app[@]}" \
+           --subscribe front_app front_app_switched
+
+## Calendar ##
+
+cal=(
+  update_freq=15
+  script="$PLUGIN_DIR/calendar.sh"
+)
+
+sketchybar --add item calendar center \
+  --set calendar "${cal[@]}"
+
+## Network ##
+
+network=(
+  icon=􀤆
+  script="$PLUGIN_DIR/network.sh"
+  label="Updating..."
+)
+
+sketchybar --add item network right \
+           --set network "${network[@]}" \
+           --subscribe network wifi_change
+
+## Battery ##
+
+battery=(
+  update_freq=180
+  script="$PLUGIN_DIR/battery.sh"
+)
+
+sketchybar --add item battery right \
+           --set battery "${battery[@]}" \
+           --subscribe battery system_woke power_source_change
+
+##### Finalizing Setup #####
+
+sketchybar --hotload on
+
+sketchybar --update

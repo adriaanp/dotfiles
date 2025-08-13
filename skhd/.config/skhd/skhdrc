@@ -9,9 +9,24 @@ hyper - return : open -na /Applications/iTerm.app
 hyper - r : yabai -m space --rotate 90
 hyper - f : yabai -m window --toggle zoom-fullscreen
 hyper - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
-hyper - space : yabai -m space --balance
+
+# balance size of windows
+shift + alt - 0 : yabai -m space --balance
+
+# make floating window fill screen
+shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
+
+# make floating window fill left-half of screen
+shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
+
+# make floating window fill right-half of screen
+shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
+
+# toggle picture-in-picture
+alt - p : yabai -m window --toggle border --toggle pip
 
 ## window focus
+alt - x : yabai -m window --focus recent
 alt - j : yabai -m window --focus south
 alt - h : yabai -m window --focus west
 alt - k : yabai -m window --focus north
@@ -24,11 +39,19 @@ hyper - 1: yabai -m space --focus web
 hyper - 2: yabai -m space --focus term
 hyper - 3: yabai -m space --focus notes
 hyper - 4: yabai -m space --focus apps
-hyper - 5: yabai -m space --focus fun
+hyper - 5: yabai -m space --focus social
+hyper - 6: yabai -m space --focus fun
+hyper - 7: yabai -m space --focus 7
+hyper - 8: yabai -m space --focus 8
+hyper - 9: yabai -m space --focus 9
 
-ctrl + shift - 1: yabai -m window --space web; yabai -m space --focus web
-ctrl + shift - 2: yabai -m window --space term; yabai -m space --focus term
-ctrl + shift - 3: yabai -m window --space notes; yabai -m space --focus notes
-ctrl + shift - 4: yabai -m window --space apps; yabai -m space --focus apps
-ctrl + shift - 5: yabai -m window --space fun; yabai -m space --focus fun
+ctrl + shift - 1: yabai -m window --space web --focus
+ctrl + shift - 2: yabai -m window --space term --focus
+ctrl + shift - 3: yabai -m window --space notes --focus
+ctrl + shift - 4: yabai -m window --space apps --focus
+ctrl + shift - 5: yabai -m window --space social --focus
+ctrl + shift - 6: yabai -m window --space fun --focus
+ctrl + shift - 7: yabai -m window --space 7 --focus
+ctrl + shift - 8: yabai -m window --space 8 --focus
+ctrl + shift - 9: yabai -m window --space 9 --focus
 
