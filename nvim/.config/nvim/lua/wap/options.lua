@@ -37,6 +37,7 @@ local options = {
   breakindent = true,
   list = true,
   listchars = "tab:▷ ,lead:·,trail:·,extends:◣,precedes:◢,nbsp:○",
+  winborder = "rounded"
 }
 
 vim.opt.shortmess:append "c"
