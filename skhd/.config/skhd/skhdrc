@@ -26,6 +26,7 @@ shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
 alt - p : yabai -m window --toggle border --toggle pip
 
 shift + alt - x : yabai -m window --swap recent
+alt - tab : yabai -m window --swap recent
 shift + alt - h : yabai -m window --swap west
 shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
