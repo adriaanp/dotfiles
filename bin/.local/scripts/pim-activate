@@ -15,6 +15,7 @@ NC='\033[0m' # No Color
 
 # Default values
 DEFAULT_REASON="Admin tasks required"
+DEFAULT_DURATION_HOURS="1"
 
 # Function to print colored output
 print_message() {
@@ -28,6 +29,8 @@ print_header() {
     echo -e "\n${BOLD}${CYAN}$1${NC}"
     echo -e "${GRAY}$(printf '=%.0s' {1..50})${NC}"
 }
+
+
 
 # Get all subscriptions for name resolution
 get_subscriptions() {
@@ -227,10 +230,25 @@ get_justification() {
     echo "$justification"
 }
 
+# Get duration from user
+get_duration() {
+    echo >&2
+    print_message $CYAN "Enter activation duration in hours:" >&2
+    read "duration_hours?Duration [$DEFAULT_DURATION_HOURS]: " >&2
+    
+    if [[ -z "$duration_hours" ]]; then
+        duration_hours="$DEFAULT_DURATION_HOURS"
+    fi
+    
+    # Convert hours to ISO 8601 duration format
+    echo "PT${duration_hours}H"
+}
+
 # Activate a single role
 activate_role() {
     local role_json=$1
     local justification=$2
+    local duration=$3
     
     local role_type=$(echo "$role_json" | jq -r '.type')
     local role_name=$(echo "$role_json" | jq -r '.roleName')
@@ -247,25 +265,26 @@ activate_role() {
     if [[ "$role_type" == "Entra ID" ]]; then
         # Activate Entra ID role
         local request_body=$(jq -n --arg action "selfActivate" \
-                               --arg principalId "$current_user_id" \
-                               --arg roleDefinitionId "$role_definition_id" \
-                               --arg directoryScopeId "$scope" \
-                               --arg justification "$justification" \
-                               --arg startDateTime "$(date -u +"%Y-%m-%dT%H:%M:%S.000000+00:00")" \
-                               '{
-                                 action: $action,
-                                 principalId: $principalId,
-                                 roleDefinitionId: $roleDefinitionId,
-                                 directoryScopeId: $directoryScopeId,
-                                 justification: $justification,
-                                 scheduleInfo: {
-                                   startDateTime: $startDateTime,
-                                   expiration: {
-                                     type: "AfterDuration",
-                                     duration: "PT1H"
-                                   }
-                                 }
-                               }')
+                                --arg principalId "$current_user_id" \
+                                --arg roleDefinitionId "$role_definition_id" \
+                                --arg directoryScopeId "$scope" \
+                                --arg justification "$justification" \
+                                --arg startDateTime "$(date -u +"%Y-%m-%dT%H:%M:%S.000000+00:00")" \
+                                --arg duration "$duration" \
+                                '{
+                                  action: $action,
+                                  principalId: $principalId,
+                                  roleDefinitionId: $roleDefinitionId,
+                                  directoryScopeId: $directoryScopeId,
+                                  justification: $justification,
+                                  scheduleInfo: {
+                                    startDateTime: $startDateTime,
+                                    expiration: {
+                                      type: "AfterDuration",
+                                      duration: $duration
+                                    }
+                                  }
+                                }')
         
         local result=$(az rest --method POST \
                               --url "https://graph.microsoft.com/beta/roleManagement/directory/roleAssignmentScheduleRequests" \
@@ -276,26 +295,27 @@ activate_role() {
         # Activate Azure Resource role
         local guid=$(uuidgen | tr '[:upper:]' '[:lower:]')
         local request_body=$(jq -n --arg roleDefinitionId "$role_definition_id" \
-                               --arg principalId "$current_user_id" \
-                               --arg justification "$justification" \
-                               --arg linkedRoleEligibilityScheduleId "$role_eligibility_schedule_id" \
-                               --arg startDateTime "$(date -u +"%Y-%m-%dT%H:%M:%S.000000+00:00")" \
-                               '{
-                                 properties: {
-                                   roleDefinitionId: $roleDefinitionId,
-                                   principalId: $principalId,
-                                   requestType: "SelfActivate",
-                                   linkedRoleEligibilityScheduleId: $linkedRoleEligibilityScheduleId,
-                                   justification: $justification,
-                                   scheduleInfo: {
-                                     startDateTime: $startDateTime,
-                                     expiration: {
-                                       type: "AfterDuration",
-                                       duration: "PT1H"
-                                     }
-                                   }
-                                 }
-                               }')
+                                --arg principalId "$current_user_id" \
+                                --arg justification "$justification" \
+                                --arg linkedRoleEligibilityScheduleId "$role_eligibility_schedule_id" \
+                                --arg startDateTime "$(date -u +"%Y-%m-%dT%H:%M:%S.000000+00:00")" \
+                                --arg duration "$duration" \
+                                '{
+                                  properties: {
+                                    roleDefinitionId: $roleDefinitionId,
+                                    principalId: $principalId,
+                                    requestType: "SelfActivate",
+                                    linkedRoleEligibilityScheduleId: $linkedRoleEligibilityScheduleId,
+                                    justification: $justification,
+                                    scheduleInfo: {
+                                      startDateTime: $startDateTime,
+                                      expiration: {
+                                        type: "AfterDuration",
+                                        duration: $duration
+                                      }
+                                    }
+                                  }
+                                }')
         
         local api_url="https://management.azure.com$scope/providers/Microsoft.Authorization/roleAssignmentScheduleRequests/$guid?api-version=2020-10-01"
         
@@ -340,13 +360,15 @@ main() {
     
     local justification=$(get_justification)
     
+    local duration=$(get_duration)
+    
     print_header "Activating Selected Roles"
     print_message $CYAN "Justification: $justification"
-    print_message $CYAN "Duration: 1h"
+    print_message $CYAN "Duration: $duration"
     echo
     
     echo "$selected_roles" | jq -c '.[]' | while read -r role; do
-        activate_role "$role" "$justification"
+        activate_role "$role" "$justification" "$duration"
         sleep 1
     done
     
