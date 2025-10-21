@@ -7,7 +7,7 @@ return {
 
     keymap = {
       preset = "enter",
-      ["<CR>"] = { "select_and_accept", "fallback" },
+      --      ["<CR>"] = { "select_and_accept", "fallback" },
     },
 
     completion = {
