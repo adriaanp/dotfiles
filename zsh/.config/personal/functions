@@ -4,3 +4,13 @@ function gl() { open /Applications/Google\ Chrome.app "https://www.google.com/se
 mcd () { mkdir -p "$1" && cd "$1"; }
 trash() { command mv "$@" ~/.Trash ; }
 ql() { qlmanage -p "$*" >& /dev/null; }
+
+tempe () {
+  cd "$(mktemp -d)"
+  chmod -R 0700 .
+  if [[ $# -eq 1 ]]; then
+    \mkdir -p "$1"
+    cd "$1"
+    chmod -R 0700 .
+  fi
+}
