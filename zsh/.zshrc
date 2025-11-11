@@ -1,3 +1,11 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+export ZSH="$HOME/.oh-my-zsh"
+
+export PATH="$HOME/.local/bin:$PATH"
+
 if command -v fastfetch &> /dev/null; then
   fastfetch
 fi
@@ -8,10 +16,6 @@ fi
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-export PATH=$HOME/.local/scripts:$PATH
-export ZSH="$HOME/.oh-my-zsh"
-export EDITOR=nvim
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 

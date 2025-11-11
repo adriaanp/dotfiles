@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 
-function gl() { open /Applications/Google\ Chrome.app "https://www.google.com/search?q=$1"; }
+open_url() {
+  if command -v open >/dev/null 2>&1; then
+    open "$1"
+  elif command -v xdg-open >/dev/null 2>&1; then
+    xdg-open "$1"
+  elif command -v wslview >/dev/null 2>&1; then
+    wslview "$1"
+  else
+    echo "Don't know how to open URLs on this system" >&2
+    return 1
+  fi
+}
+
+function ggl() { open_url "https://www.google.com/search?q=$1" }
+
 mcd () { mkdir -p "$1" && cd "$1"; }
 trash() { command mv "$@" ~/.Trash ; }
 ql() { qlmanage -p "$*" >& /dev/null; }
