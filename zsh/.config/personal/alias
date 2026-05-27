@@ -43,6 +43,7 @@ alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 # Show network connections
 alias network.connections='lsof -l -i +L -R -V'
 alias network.established='lsof -l -i +L -R -V | grep ESTABLISHED'
+alias network.mkconnect="sudo dtrace -n 'syscall::connect:entry {printf(\"%s(%d) connects\", execname, pid);}'"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
