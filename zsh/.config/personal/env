@@ -3,8 +3,11 @@
 export MYTMP="~/tmp"
 export DOTFILES="$HOME/dotfiles"
 export EDITOR="nvim"
+export LESS="-RFX"
 
-export KUBECONFIG=$(ls ~/.kube/configs/*.yaml | tr '\n' ':')
+if [ -d ~/.kube/config ]; then
+  export KUBECONFIG=$(ls ~/.kube/configs/*.yaml | tr '\n' ':')
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh" # This loads nvm

@@ -14,8 +14,9 @@ WIRED_IP=$(for iface in $(ifconfig -l | tr ' ' '\n' | grep '^en[0-9]'); do
     ifconfig "$iface" 2>/dev/null | grep 'inet ' | grep -v '127.0.0.1' | head -1 | awk '{print $2}'
 done | head -1)
 
+# Permission macOs for ipconfig: sudo ipconfig sethidewifiinfo 0
 # Check for WiFi connection
-SSID=$(system_profiler SPAirPortDataType | awk '/Current Network Information:/ { getline; print substr($0, 13, (length($0) - 13)); exit }')
+SSID=$(ipconfig getsummary "$WIFI_INTERFACE" | awk -F ' SSID : ' '/ SSID : / {print $2}')
 
 # Determine connection status and display
 if [ "$WIRED_IP" != "" ]; then
