@@ -5,7 +5,7 @@ export DOTFILES="$HOME/dotfiles"
 export EDITOR="nvim"
 export LESS="-RFX"
 
-if [ -d ~/.kube/config ]; then
+if [ -d ~/.kube/configs ]; then
   export KUBECONFIG=$(ls ~/.kube/configs/*.yaml | tr '\n' ':')
 fi
 
