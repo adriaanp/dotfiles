@@ -44,10 +44,11 @@ yabai -m space 4 --label apps
 yabai -m space 5 --label social
 yabai -m space 6 --label fun
 
-yabai -m rule --add app="^(Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|ExpressVPN|Docker Desktop)$" manage=off
+yabai -m rule --add app="^(Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|ExpressVPN|Docker Desktop|Time Machine)$" manage=off
 yabai -m rule --add app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add app="System Information" title="About This Mac" manage=off
+yabai -m rule --add app="darktable" manage=off
 yabai -m rule --add app="^Arc$" space=web
 yabai -m rule --add app="^iTerm2$" space=term
 yabai -m rule --add app="^Obsidian$" space=notes
