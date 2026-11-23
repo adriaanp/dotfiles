@@ -3,3 +3,9 @@
 if type brew &>/dev/null; then
   export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 fi
+
+# opencode
+export PATH=/Users/adriaanp/.opencode/bin:$PATH
+
+# kubectl plugins managed by Krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
